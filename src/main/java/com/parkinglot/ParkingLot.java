@@ -2,38 +2,42 @@ package com.parkinglot;
 
 import com.parkinglot.constant.CommonConstant;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.List;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Data
 
 public class ParkingLot {
-    private int capacity;
-    List<Car> parkedCars;
+    private int totalCapacity;
+    private int currentCapacity;
+    private Map<Ticket,Car> parkedCars;
 
     public ParkingLot(int capacity) {
-        this.capacity = capacity;
-        parkedCars=new ArrayList<>(capacity);
+        this.totalCapacity= capacity;
+        this.currentCapacity=0;
+        parkedCars=new HashMap<>(capacity);
     }
     public ParkingLot(){
-        this.capacity= CommonConstant.DEFAULT_CAPACITY;
-        parkedCars=new ArrayList<>(capacity);
+        this.totalCapacity= CommonConstant.DEFAULT_CAPACITY;
+        this.currentCapacity=0;
+        parkedCars=new HashMap<>(totalCapacity);
     }
     public Ticket parking(Car car){
-        if(capacity>0){
-            capacity--;
-            parkedCars.add(car);
-            return new Ticket();
+        if(currentCapacity<totalCapacity){
+            currentCapacity++;
+            Ticket ticket=new Ticket();
+            parkedCars.put(ticket,car);
+            return ticket;
         }
         return null;
     }
 
     public Car fetch(Ticket ticket){
-        Car car=parkedCars.get(parkedCars.size()-1);
-        parkedCars.remove(parkedCars.size()-1);
-        capacity++;
+        Car car=parkedCars.get(ticket);
+        parkedCars.put(ticket,null);
+        currentCapacity--;
         return car;
     }
 }

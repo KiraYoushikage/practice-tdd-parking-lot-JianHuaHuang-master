@@ -8,6 +8,9 @@
 
 [x] AC3 :  Given a parking lot with a parked car, and a parking ticket, When fetch the car,Then return the parked car.
 
+[x] AC4: Given a parking lot with two parked cars, and two parking tickets,When fetch thecar twice,Then return the right car with each ticket.
+
+
 AC3 : Given a parking lot,and a car , When park the car,Then return a right parking ticket.
 
 AC3 :  Given a parking lot,and a wrong ticket, When fetch the car,Then can not return a Car

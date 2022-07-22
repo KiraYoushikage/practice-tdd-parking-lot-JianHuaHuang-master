@@ -43,7 +43,7 @@ public class ParkingLotTests {
         //then
         Assertions.assertNull(ticket);
     }
-
+    // AC3 :  Given a parking lot with a parked car, and a parking ticket, When fetch the car,Then return the parked car.
     @Test
     void should_return_a_car_when_parking_given_a_ticket_and_a_parkingLot_with_parked_car() {
         //given
@@ -57,7 +57,23 @@ public class ParkingLotTests {
         Assertions.assertNotNull(myCar);
         Assertions.assertEquals(car,myCar);
     }
-
-
+    // AC4: Given a parking lot with two parked cars, and two parking tickets,When fetch the car twice,Then return the right car with each ticket
+    @Test
+    void should_return_right_twice_car_when_parking_given_twice_ticket_and_a_parkingLot() {
+        //given
+        ParkingLot parkingLot=new ParkingLot(2);
+        Car car1=new Car();
+        Ticket ticket1=parkingLot.parking(car1);
+        Car car2=new Car();
+        Ticket ticket2=parkingLot.parking(car2);
+        //when
+        Car myCar1=parkingLot.fetch(ticket1);
+        Car myCar2=parkingLot.fetch(ticket2);
+        //then
+        Assertions.assertNotNull(myCar1);
+        Assertions.assertNotNull(myCar2);
+        Assertions.assertEquals(car1,myCar1);
+        Assertions.assertEquals(car2,myCar2);
+    }
 
 }
