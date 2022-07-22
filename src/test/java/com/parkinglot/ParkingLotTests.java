@@ -1,5 +1,6 @@
 package com.parkinglot;
 
+import com.parkinglot.exceptions.UnrecognizedTicketException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -57,7 +58,7 @@ public class ParkingLotTests {
         Assertions.assertNotNull(myCar);
         Assertions.assertEquals(car,myCar);
     }
-    // AC4: Given a parking lot with two parked cars, and two parking tickets,When fetch the car twice,Then return the right car with each ticket
+    // Case 4: Given a parking lot with two parked cars, and two parking tickets,When fetch the car twice,Then return the right car with each ticket
     @Test
     void should_return_right_twice_car_when_parking_given_twice_ticket_and_a_parkingLot() {
         //given
@@ -74,6 +75,24 @@ public class ParkingLotTests {
         Assertions.assertNotNull(myCar2);
         Assertions.assertEquals(car1,myCar1);
         Assertions.assertEquals(car2,myCar2);
+
     }
+
+//    story2-Case 1 : Given a parking lot, and an unrecognized ticket, When fetch the car,
+//    Then return nothing with error message "Unrecognized parking ticket."
+@Test
+void should_throw_error_message_when_fetch_given_a_wrong_ticket_and_a_parkingLot() {
+    //given
+    ParkingLot parkingLot=new ParkingLot(2);
+    Car car1=new Car();
+    Ticket ticket1=parkingLot.parking(car1);
+
+    //when
+    Ticket ticket=new Ticket();
+    //then
+    UnrecognizedTicketException ticketException = Assertions.assertThrows(UnrecognizedTicketException.class, () -> parkingLot.fetch(ticket));
+    Assertions.assertEquals("Unrecognized parking ticket.",ticketException.getMessage());
+
+}
 
 }

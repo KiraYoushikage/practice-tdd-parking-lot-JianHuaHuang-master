@@ -1,18 +1,20 @@
 package com.parkinglot;
 
 import com.parkinglot.constant.CommonConstant;
+import com.parkinglot.exceptions.UnrecognizedTicketException;
 import lombok.Data;
 
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 @Data
 
 public class ParkingLot {
-    private int totalCapacity;
+    private final int totalCapacity;
     private int currentCapacity;
-    private Map<Ticket,Car> parkedCars;
+    private final Map<Ticket,Car> parkedCars;
 
     public ParkingLot(int capacity) {
         this.totalCapacity= capacity;
@@ -35,9 +37,14 @@ public class ParkingLot {
     }
 
     public Car fetch(Ticket ticket){
-        Car car=parkedCars.get(ticket);
-        parkedCars.put(ticket,null);
-        currentCapacity--;
-        return car;
+        if (ticket.isStatus()){
+            Car car=parkedCars.get(ticket);
+            if (Objects.isNull(car)) throw new UnrecognizedTicketException();
+            parkedCars.remove(ticket);
+            currentCapacity--;
+            return car;
+        }
+
+        throw new UnrecognizedTicketException();
     }
 }
