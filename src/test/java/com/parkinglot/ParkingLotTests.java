@@ -4,9 +4,11 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class ParkingLotTests {
-    
+
+    // AC1 : Given a parking lot,and a car, When park the car,Then return a parking ticket.
+
     @Test
-    void should_return_a_ticket_when_parking_given_a_car() {
+    void should_return_a_ticket_when_parking_given_a_car_and_a_parkingLot () {
         //given
         ParkingLot parkingLot=new ParkingLot();
         Car car=new Car();
@@ -16,9 +18,9 @@ public class ParkingLotTests {
         Assertions.assertNotNull(ticket);
 //        Assertions.assertEquals();
     }
-
+    // AC1 : Given a parking lot,and a ticket, When fetch the car,Then return a parking Car.
     @Test
-    void should_return_a_car_when_fetch_given_a_ticket() {
+    void should_return_a_car_when_fetch_given_a_ticket_and_a_parkingLot() {
         //given
         ParkingLot parkingLot=new ParkingLot();
         Ticket ticket=new Ticket();
@@ -26,6 +28,21 @@ public class ParkingLotTests {
         Car car=parkingLot.fetch(ticket);
         //then
         Assertions.assertNotNull(car);
-//        Assertions.assertEquals();
     }
+
+//    AC5 :   Given a  parking lot which has no capacity , and a car, When park the car,Then can not return  a ticket.
+    @Test
+    void should_return_null_when_parking_given_a_car_and_a_full_parkingLot() {
+        //given
+        ParkingLot parkingLot=new ParkingLot(1);
+        Car car1=new Car();
+        parkingLot.parking(car1);
+        Car car=new Car();
+        //when
+        Ticket ticket=parkingLot.parking(car);
+        //then
+        Assertions.assertNull(ticket);
+    }
+
+
 }

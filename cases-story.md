@@ -1,6 +1,6 @@
 
 
-AC1 : Given a parking lot,and a car, When park the car,Then return a parking ticket.
+[X] AC1 : Given a parking lot,and a car, When park the car,Then return a parking ticket.
       Given a parking lot,and a ticket, When fetch the car,Then return a parking Car.
 AC2 : Given a parking lot,and a car , When park the car,Then return a right parking ticket.
 
