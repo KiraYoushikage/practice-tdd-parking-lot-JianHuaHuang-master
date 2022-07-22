@@ -1,9 +1,12 @@
 package com.parkinglot;
 
+import com.parkinglot.exceptions.NoPositionException;
 import com.parkinglot.exceptions.UnrecognizedTicketException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
+
+import static com.parkinglot.constant.CommonConstant.NO_AVAILABLE_POSITION;
 
 public class ParkingLotTests {
 
@@ -110,6 +113,22 @@ void should_throw_error_message_when_fetch_given_a_wrong_ticket_and_a_parkingLot
         //then
         UnrecognizedTicketException ticketException = Assertions.assertThrows(UnrecognizedTicketException.class,executable );
         Assertions.assertEquals("Unrecognized parking ticket.",ticketException.getMessage());
+
+    }
+
+
+    @Test
+    void should_throw_error_message_when_park_given_a_car_and_a_full_parkingLot() {
+        //given
+        ParkingLot parkingLot=new ParkingLot(1);
+        Car car1=new Car();
+        Ticket ticket1= parkingLot.parking(car1);
+        Car car2=new Car();
+        //when
+        Executable executable =() -> parkingLot.parking(car2);//第二辆已经满了
+        //then
+        NoPositionException noPositionException= Assertions.assertThrows(NoPositionException.class,executable );
+        Assertions.assertEquals(NO_AVAILABLE_POSITION,noPositionException.getMessage());
 
     }
 
