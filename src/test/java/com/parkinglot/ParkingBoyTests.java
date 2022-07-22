@@ -72,7 +72,22 @@ public class ParkingBoyTests {
 
     }
 
-    
+    @Test
+    void should_throw_error_message_when_fetch_given_a_used_ticket_and_a_parkingBoy() {
+        //given
+        ParkingLot parkingLot=new ParkingLot(2);
+        Car car1=new Car();
+        Ticket ticket1= parkingLot.parking(car1);
+        Car myCar1=parkingLot.fetch(ticket1);
+        //when
+        Executable executable =() -> parkingLot.fetch(ticket1);//使用已经使用过的ticket
+        //then
+        UnrecognizedTicketException ticketException = Assertions.assertThrows(UnrecognizedTicketException.class,executable );
+        Assertions.assertEquals("Unrecognized parking ticket.",ticketException.getMessage());
+
+    }
+
+
 
 
 }
