@@ -114,18 +114,7 @@ void should_throw_error_message_when_fetch_given_a_wrong_ticket_and_a_parkingLot
     }
 
 
-    @Test
-    void should_return_a_ticket_when_park_given_a_car_and_a_parkingBoy() {
 
-        //given
-        ParkingLot parkingLot=new ParkingLot(2);
-        ParkingBoy parkingBoy=new ParkingBoy(parkingLot);
-        //when
-        Car car=new Car();
-        Ticket ticket=parkingBoy.park(car);
-        //then
-        Assertions.assertNotNull(ticket);
-    }
 
 
 
