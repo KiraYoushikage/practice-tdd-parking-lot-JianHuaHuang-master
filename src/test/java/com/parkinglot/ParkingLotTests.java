@@ -128,5 +128,20 @@ void should_throw_error_message_when_fetch_given_a_wrong_ticket_and_a_parkingLot
     }
 
 
+    @Test
+    void should_return_a_car_when_fetch_given_a_ticket_and_a_parkingBoy() {
+
+        //given
+        ParkingLot parkingLot=new ParkingLot(2);
+        ParkingBoy parkingBoy=new ParkingBoy(parkingLot);
+        Car car=new Car();
+        Ticket ticket=parkingBoy.park(car);
+        //when
+        Car myCar=parkingBoy.fetch(ticket);
+        //then
+        Assertions.assertNotNull(myCar);
+        Assertions.assertEquals(car,myCar);
+    }
+
 
 }
