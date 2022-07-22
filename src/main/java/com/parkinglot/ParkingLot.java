@@ -1,6 +1,7 @@
 package com.parkinglot;
 
 import com.parkinglot.constant.CommonConstant;
+import com.parkinglot.exceptions.NoPositionException;
 import com.parkinglot.exceptions.UnrecognizedTicketException;
 import lombok.Data;
 
@@ -33,7 +34,7 @@ public class ParkingLot {
             parkedCars.put(ticket,car);
             return ticket;
         }
-        return null;
+        throw  new NoPositionException();
     }
 
     public Car fetch(Ticket ticket){
