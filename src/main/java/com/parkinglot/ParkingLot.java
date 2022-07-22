@@ -42,6 +42,7 @@ public class ParkingLot {
             if (Objects.isNull(car)) throw new UnrecognizedTicketException();
             parkedCars.remove(ticket);
             currentCapacity--;
+            ticket.setStatus(false);
             return car;
         }
 

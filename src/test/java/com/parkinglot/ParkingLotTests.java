@@ -3,6 +3,7 @@ package com.parkinglot;
 import com.parkinglot.exceptions.UnrecognizedTicketException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
 
 public class ParkingLotTests {
 
@@ -95,4 +96,20 @@ void should_throw_error_message_when_fetch_given_a_wrong_ticket_and_a_parkingLot
 
 }
 
+    // story2-Case 2 :Given a parking lot, and a used ticket, When fetch the car,
+    // Then return nothingwith error message "Unrecognized parking ticket."
+    @Test
+    void should_throw_error_message_when_fetch_given_a_used_ticket_and_a_parkingLot() {
+        //given
+        ParkingLot parkingLot=new ParkingLot(2);
+        Car car1=new Car();
+        Ticket ticket1=parkingLot.parking(car1);
+        Car myCar1=parkingLot.fetch(ticket1);
+        //when
+        Executable executable =() -> parkingLot.fetch(ticket1);
+        //then
+        UnrecognizedTicketException ticketException = Assertions.assertThrows(UnrecognizedTicketException.class,executable );
+        Assertions.assertEquals("Unrecognized parking ticket.",ticketException.getMessage());
+
+    }
 }
