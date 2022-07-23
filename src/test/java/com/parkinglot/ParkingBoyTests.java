@@ -135,6 +135,24 @@ public class ParkingBoyTests {
     }
 
 
+    @Test
+    void should_park_the_second_parkingLot_when_park_given_a_car_and_a_parkingBoy_but_a_full_parkingLot_and_a_parkingLot() {
+        //given
+        ParkingLot parkingLot1=new ParkingLot(1);
+        ParkingLot parkingLot2=new ParkingLot(1);
+        ParkingBoy parkingBoy=new ParkingBoy(parkingLot1,parkingLot2);
+        Car car1=new Car();
+        //when
+        Ticket ticket1= parkingBoy.park(car1);
+        Car car2=new Car();
+        Ticket ticket2=parkingBoy.park(car2);
 
+        Car myCar2=parkingLot2.fetch(ticket2);
+        //then
+
+        Assertions.assertNotNull(myCar2);
+        Assertions.assertEquals(car2,myCar2);
+
+    }
 
 }
