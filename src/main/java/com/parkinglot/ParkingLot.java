@@ -11,7 +11,6 @@ import java.util.Map;
 import java.util.Objects;
 
 @Data
-
 public class ParkingLot {
     private final int totalCapacity;
     private int currentCapacity;

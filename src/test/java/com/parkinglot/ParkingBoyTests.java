@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
 import static com.parkinglot.constant.CommonConstant.NO_AVAILABLE_POSITION;
+import static com.parkinglot.constant.CommonConstant.UNRECOGNIZED_PARKING_TICKET;
 
 public class ParkingBoyTests {
 
@@ -88,7 +89,7 @@ public class ParkingBoyTests {
         Executable executable =() -> parkingBoy.fetch(ticket1);//使用已经使用过的ticket
         //then
         UnrecognizedTicketException ticketException = Assertions.assertThrows(UnrecognizedTicketException.class,executable );
-        Assertions.assertEquals("Unrecognized parking ticket.",ticketException.getMessage());
+        Assertions.assertEquals(UNRECOGNIZED_PARKING_TICKET,ticketException.getMessage());
 
     }
 
@@ -108,6 +109,31 @@ public class ParkingBoyTests {
         Assertions.assertEquals(NO_AVAILABLE_POSITION,noPositionException.getMessage());
 
     }
+
+    @Test
+    void should_park_the_first_parkingLot_when_park_given_a_car_and_a_parkingBoy_but_a_two_parkingLot() {
+        //given
+        ParkingLot parkingLot1=new ParkingLot(1);
+        ParkingLot parkingLot2=new ParkingLot(1);
+        ParkingBoy parkingBoy=new ParkingBoy(parkingLot1,parkingLot2);
+        Car car1=new Car();
+        //when
+        Ticket ticket1= parkingBoy.park(car1);
+        Car myCar1=parkingLot1.fetch(ticket1);
+
+        Car car2=new Car();
+        Ticket ticket2=parkingBoy.park(car2);
+
+        Executable executable=()->parkingLot2.fetch(ticket2);
+        //then
+
+        Assertions.assertNotNull(myCar1);
+        Assertions.assertEquals(car1,myCar1);
+        UnrecognizedTicketException unrecognizedTicketException= Assertions.assertThrows(UnrecognizedTicketException.class,executable );
+        Assertions.assertEquals(UNRECOGNIZED_PARKING_TICKET,unrecognizedTicketException.getMessage());
+
+    }
+
 
 
 
