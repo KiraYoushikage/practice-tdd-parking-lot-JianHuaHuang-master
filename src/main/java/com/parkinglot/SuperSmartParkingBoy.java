@@ -11,7 +11,7 @@ import java.util.*;
  * @Package com.parkinglot
  * @date 2022/7/24 12:39
  */
-public class SuperSmartParkingBoy {
+public class SuperSmartParkingBoy implements ParkingLotAction {
     private List<ParkingLot> parkingLots;
 
     {

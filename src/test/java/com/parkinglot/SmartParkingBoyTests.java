@@ -13,7 +13,7 @@ public class SmartParkingBoyTests {
 
 
     @Test
-    void should_park_in_more_capicaity_when_park_given_a_car_and_a_SmartParkingBoy() {
+    public void should_park_in_more_capicaity_when_park_given_a_car_and_a_SmartParkingBoy() {
 
         //given
         ParkingLot parkingLot1=new ParkingLot(3);

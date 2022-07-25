@@ -12,7 +12,7 @@ import static com.parkinglot.constant.CommonConstant.UNRECOGNIZED_PARKING_TICKET
 public class ParkingBoyTests {
 
     @Test
-    void should_return_a_ticket_when_park_given_a_car_and_a_parkingBoy() {
+    public void should_return_a_ticket_when_park_given_a_car_and_a_parkingBoy() {
 
         //given
         ParkingLot parkingLot=new ParkingLot(2);
@@ -26,7 +26,7 @@ public class ParkingBoyTests {
 
 
     @Test
-    void should_return_a_car_when_fetch_given_a_ticket_and_a_parkingBoy() {
+    public void should_return_a_car_when_fetch_given_a_ticket_and_a_parkingBoy() {
 
         //given
         ParkingLot parkingLot=new ParkingLot(2);
@@ -42,7 +42,7 @@ public class ParkingBoyTests {
 
 
     @Test
-    void should_return_twice_car_when_fetch_given_twice_ticket_and_twice_parkingBoy() {
+    public void should_return_twice_car_when_fetch_given_twice_ticket_and_twice_parkingBoy() {
 
         //given
         ParkingLot parkingLot=new ParkingLot(2);
@@ -63,7 +63,7 @@ public class ParkingBoyTests {
 
 
     @Test
-    void should_throw_error_message_when_fetch_given_a_wrong_ticket_and_a_parkingBoy() {
+    public void should_throw_error_message_when_fetch_given_a_wrong_ticket_and_a_parkingBoy() {
         //given
         ParkingLot parkingLot=new ParkingLot(2);
         ParkingBoy parkingBoy=new ParkingBoy(parkingLot);
@@ -78,7 +78,7 @@ public class ParkingBoyTests {
     }
 
     @Test
-    void should_throw_error_message_when_fetch_given_a_used_ticket_and_a_parkingBoy() {
+    public void should_throw_error_message_when_fetch_given_a_used_ticket_and_a_parkingBoy() {
         //given
         ParkingLot parkingLot=new ParkingLot(2);
         ParkingBoy parkingBoy=new ParkingBoy(parkingLot);
@@ -95,7 +95,7 @@ public class ParkingBoyTests {
 
 
     @Test
-    void should_throw_error_message_when_park_given_a_car_and_a_parkingBoy_but_a_full_parkingLot() {
+    public void should_throw_error_message_when_park_given_a_car_and_a_parkingBoy_but_a_full_parkingLot() {
         //given
         ParkingLot parkingLot=new ParkingLot(1);
         ParkingBoy parkingBoy=new ParkingBoy(parkingLot);
@@ -111,7 +111,7 @@ public class ParkingBoyTests {
     }
 
     @Test
-    void should_park_the_first_parkingLot_when_park_given_a_car_and_a_parkingBoy_but_a_two_parkingLot() {
+    public void should_park_the_first_parkingLot_when_park_given_a_car_and_a_parkingBoy_but_a_two_parkingLot() {
         //given
         ParkingLot parkingLot1=new ParkingLot(1);
         ParkingLot parkingLot2=new ParkingLot(1);
@@ -136,7 +136,7 @@ public class ParkingBoyTests {
 
 
     @Test
-    void should_park_the_second_parkingLot_when_park_given_a_car_and_a_parkingBoy_but_a_full_parkingLot_and_a_parkingLot() {
+    public void should_park_the_second_parkingLot_when_park_given_a_car_and_a_parkingBoy_but_a_full_parkingLot_and_a_parkingLot() {
         //given
         ParkingLot parkingLot1=new ParkingLot(1);
         ParkingLot parkingLot2=new ParkingLot(1);

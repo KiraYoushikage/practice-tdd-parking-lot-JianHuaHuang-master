@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
  */
 public class SuperSmartParkingBoyTests{
     @Test
-    void should_park_in_more_proportion_of_capicaity_with__when_park_given_a_car_and_a_SuperSmartParkingBoy() {
+    public void should_park_in_more_proportion_of_capicaity_with__when_park_given_a_car_and_a_SuperSmartParkingBoy() {
 
         //given
         ParkingLot parkingLot1=new ParkingLot(3);
